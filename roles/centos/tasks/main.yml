@@ -1,0 +1,18 @@
+- name: Download CentOS 7 image from cloud.centos.org
+  become: yes
+  get_url:
+    url: "{{centos_link_download}}"
+    dest: "{{source_image_dir}}{{source_image_file}}"
+    checksum: "{{centos_sha256_download}}"
+    mode: 0755
+
+- name: Generate config.yml for Cloud-init image
+  template:
+    src: config.yml.j2
+    dest: "{{source_image_dir}}/config.yml"
+    mode: 0644
+
+- name: Cloud-init image 
+  shell: "cloud-localds config.iso config.yml"
+  args:
+    chdir: "{{source_image_dir}}"

@@ -1,0 +1,11 @@
+- name: define vm
+  virt:
+    command: define
+    xml: "{{ lookup('template', 'centos7-template.xml.j2') }}"
+    
+- name: start vm
+  virt:
+    name: "{{ vm_name }}"
+    state: running
+    xml: "{{ lookup('template', 'centos7-template.xml.j2') }}"
+

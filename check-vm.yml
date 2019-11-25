@@ -1,0 +1,7 @@
+- name: setup Docker
+  hosts: nodes
+  connection: local
+  become: yes
+  gather_facts: yes
+  roles:
+    - role: docker
