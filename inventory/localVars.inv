@@ -1,0 +1,6 @@
+[ansible]
+192.168.1.2 ansible_user=daniel
+
+[nodes]
+192.168.122.199 ansible_user=docker
+192.168.122.76 ansible_user=docker

@@ -8,17 +8,19 @@
     state: absent
 
 - name: upgrade all packages
+  become: yes
   yum:
-    name: "{{item}}"
-    state: latest
-  with_items: 
-  - "{{pkgs}}"
+    name: "{{pkgs}}"
+    state: present
 
+
+##not working for a bug ? (https://github.com/ansible/ansible/issues/11814)
 - name: Add Docker repository
+  become_method: sudo
   yum_repository:
-    name: Docker
+    name: docker-ce.repo
     description: Docker repo
-    baseurl: "{{ docker_yum_repo_url }}"
+    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
 
 - name: Install Docker.
   package:

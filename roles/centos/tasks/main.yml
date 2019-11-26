@@ -10,7 +10,7 @@
   template:
     src: config.yml.j2
     dest: "{{source_image_dir}}/config.yml"
-    mode: 0644
+    mode: 0755
 
 - name: Cloud-init image 
   shell: "cloud-localds config.iso config.yml"

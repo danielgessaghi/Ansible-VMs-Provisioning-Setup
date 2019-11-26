@@ -1,9 +1,11 @@
 - name: define vm
+  become: yes
   virt:
     command: define
     xml: "{{ lookup('template', 'centos7-template.xml.j2') }}"
     
 - name: start vm
+  become: yes
   virt:
     name: "{{ vm_name }}"
     state: running

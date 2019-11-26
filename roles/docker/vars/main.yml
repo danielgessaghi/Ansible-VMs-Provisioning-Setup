@@ -17,6 +17,6 @@ docker_users:
 
 
 pkgs:
-- device-mapper-persistent-data
+#- device-mapper-persistent-data
 - yum-utils
 - lvm2

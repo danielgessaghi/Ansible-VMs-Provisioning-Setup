@@ -1,5 +1,5 @@
 #cloud-config
-#package_upgrade: true
+package_upgrade: true
 
 hostname: {{hostname}}
 fqdn: {{fqdn}}
@@ -9,7 +9,6 @@ manage_etc_hosts: true
 groups:
   - docker: [root,sys,wheel]
   - cloud-users
-
 
 users:
   - default
@@ -21,12 +20,3 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
       - {{ vm_public_key }}
-  - name: root
-    primary_group: docker
-    groups: docker, root
-    lock_passwd: false
-    passwd: {{image_default_password}}
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    ssh_authorized_keys:
-      - {{ vm_public_key }}
-  
