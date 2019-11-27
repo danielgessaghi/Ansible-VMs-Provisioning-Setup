@@ -1,5 +1,6 @@
 #cloud-config
 package_upgrade: true
+package_upgrade: true
 
 hostname: {{hostname}}
 fqdn: {{fqdn}}
@@ -20,3 +21,9 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
       - {{ vm_public_key }}
+
+packages:
+ - python3
+ - device-mapper-persistent-data
+ - yum-utils
+ - lvm2

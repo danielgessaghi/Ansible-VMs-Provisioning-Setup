@@ -17,6 +17,11 @@ docker_users:
 
 
 pkgs:
-#- device-mapper-persistent-data
-- yum-utils
-- lvm2
+  #- device-mapper-persistent-data
+  - yum-utils
+  - lvm2
+
+docker_pkgs:
+  - docker-ce 
+  - docker-ce-cli 
+  - containerd.io 
