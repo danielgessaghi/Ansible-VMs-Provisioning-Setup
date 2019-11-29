@@ -1,8 +1,8 @@
 - name: setup a virtualization environment
-  hosts: ansible
+  #hosts: ansible
   connection: local
   become: yes
   gather_facts: yes
   roles:
-    - role: centos
-    - role: kvm-create-VM
+    - role: cloud-init-CentOS
+    - role: create-vm

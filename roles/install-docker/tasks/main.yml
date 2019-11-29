@@ -9,21 +9,25 @@
 
 - name: upgrade all packages
   become: yes
-  become_method: sudo
   yum:
     name: "{{pkgs}}"
     state: present
 
 - name: Add Docker repository
   become: yes
-  #shell: "sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo"
+  shell: "sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo"
   #ignore_errors: yes
-  yum_repository:
-    name: docker-ce.repo
-    description: Docker repo
-    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+  #yum_repository:
+  #  name: docker-ce
+  #  description: Docker repo
+  #  baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+  #copy:
+  #  src: docker-ce.repo
+  #  dest: /etc/yum.repo.d/docker-ce.repo
+    
 
-- name: Install Docker.
+- name: Install Docker
+  become: yes
   yum:
     name: "{{docker_pkgs}}"
     state: present
@@ -38,8 +42,6 @@
 - name: Ensure handlers are notified now to avoid firewall conflicts.
   meta: flush_handlers
 
-- include_tasks: docker-compose.yml
-  when: docker_install_compose | bool
 
 - include_tasks: docker-users.yml
   when: docker_users | length > 0

@@ -1,6 +1,5 @@
 - name: setup Docker
   hosts: nodes
-  connection: local
   become: yes
   roles:
-    - role: docker
+    - role: install-docker
