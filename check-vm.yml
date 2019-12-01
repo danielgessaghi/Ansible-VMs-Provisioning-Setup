@@ -2,4 +2,5 @@
   hosts: nodes
   become: yes
   roles:
+    - role: status-vm
     - role: install-docker

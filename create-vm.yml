@@ -1,8 +1,10 @@
 - name: setup a virtualization environment
-  #hosts: ansible
+  hosts: ansible
   connection: local
   become: yes
   gather_facts: yes
   roles:
-    - role: cloud-init-CentOS
-    - role: create-vm
+    - { role: cloud-init-CentOS, hostname: dockernode01, fqdn: dockernode01.docker.local}
+    - { role: cloud-init-CentOS, hostname: dockernode02, fqdn: dockernode02.docker.local}
+    - { role: create-vm, vm_name: dockernode01 }
+    - { role: create-vm, vm_name: dockernode02 }

@@ -9,10 +9,10 @@
 - name: Generate config.yml for Cloud-init image
   template:
     src: config.yml.j2
-    dest: "{{source_image_dir}}/config.yml"
+    dest: "{{source_image_dir}}/config-{{hostname}}.yml"
     mode: 0755
 
 - name: Cloud-init image 
-  shell: "cloud-localds config.iso config.yml"
+  shell: "cloud-localds config-{{hostname}}.iso config-{{hostname}}.yml"
   args:
     chdir: "{{source_image_dir}}"

@@ -1,6 +1,5 @@
 <domain type="kvm">
   <name>{{ vm_name }}</name>
-  <uuid>aecae15b-b034-427a-a496-89b157ca7a80</uuid>
   <metadata>
     <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
       <libosinfo:os id="http://centos.org/centos/7.0"/>
@@ -42,7 +41,7 @@
     </disk>
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
-      <source file="{{ source_image_dir }}config.iso"/>
+      <source file="{{ source_image_dir }}config-{{vm_name}}.iso"/>
       <target dev="sda" bus="sata"/>
       <readonly/>
       <address type="drive" controller="0" bus="0" target="0" unit="0"/>
@@ -93,7 +92,6 @@
       <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x6"/>
     </controller>
     <interface type="network">
-      <mac address="52:54:00:43:c1:5e"/>
       <source network="default" bridge="virbr0"/>
       <target dev="vnet0"/>
       <model type="rtl8139"/>

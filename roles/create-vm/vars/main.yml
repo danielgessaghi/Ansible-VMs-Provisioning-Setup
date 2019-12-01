@@ -1,4 +1,3 @@
-centos7_template: /home/daniel/Documents/Ansible-VMs-Provisioning-Setup/roles/kvm-create-VM/files/CentOS-7-x86_64-GenericCloud-1907.qcow2c
-vm_name: centos7
+vm_name: node01
 source_image_dir: /var/lib/libvirt/images/
-source_image_file: CentOS-7-x86_64-GenericCloud-1907.qcow2c
+source_image_file: CentOS-7-x86_64-{{vm_name}}-1907.qcow2c

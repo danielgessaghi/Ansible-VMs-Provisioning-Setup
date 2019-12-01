@@ -1,21 +1,11 @@
 centos_link_download: https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1907.qcow2c
 source_image_dir: /var/lib/libvirt/images/
-source_image_file: CentOS-7-x86_64-GenericCloud-1907.qcow2c
+source_image_file: CentOS-7-x86_64-{{hostname}}-1907.qcow2c
 centos_sha256_download: sha256:2e4317beb18262af6b5f283a9b6de75700e35cfdb322ae0e6865f355bc599327
-
-
-
-kvm_host: localhost
-vm_data_dir: /home/daniel/kvm/vms
-
-
-cloud_init_user_data: "{{ vm_data_dir }}/{{ vm_name} }/user-data"
-cloud_init_meta_data: "{{ vm_data_dir }}/{{ vm_name }}/meta-data"
-cloud_init_iso_data: "{{ vm_data_dir }}/{{ vm_name }}/cidata.iso"
 
 user: docker
 image_default_password: $6$rounds=4096$MtFx/FMKwRfBXd$.qP0lA8j0aa8lAG5hcGgNOh8GHfPE4W98V/7xti/VqGW.9q6b2CJlAw8..v8WI9J9zPdW6Rz39Aj4sqJ.2IJO0
-vm_name: centos7
+
 fqdn: dockernode01.docker.local
 hostname: dockernode01
 
