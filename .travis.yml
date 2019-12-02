@@ -10,4 +10,5 @@ install:
 script:
   - molecule --version
   - ansible --version
+  - cd roles/docker
   - molecule test
