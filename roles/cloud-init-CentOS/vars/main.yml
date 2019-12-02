@@ -8,5 +8,5 @@ image_default_password: $6$rounds=4096$MtFx/FMKwRfBXd$.qP0lA8j0aa8lAG5hcGgNOh8GH
 
 fqdn: dockernode01.docker.local
 hostname: dockernode01
-
+new_size: 40
 vm_public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

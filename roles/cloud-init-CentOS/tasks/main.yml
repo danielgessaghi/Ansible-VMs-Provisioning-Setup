@@ -6,6 +6,10 @@
     checksum: "{{centos_sha256_download}}"
     mode: 0755
 
+- name: Resize CentOS 7 image 
+  bacome: yes
+  shell: "qemu-img resize {{source_image_dir}}{{source_image_file}} +{{new_size}}G"
+
 - name: Generate config.yml for Cloud-init image
   template:
     src: config.yml.j2
