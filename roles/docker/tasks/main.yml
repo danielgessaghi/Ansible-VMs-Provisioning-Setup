@@ -1,0 +1,42 @@
+---
+- name: Ensure old versions of Docker are not installed.
+  yum:
+    name:
+      - docker
+      - docker-common
+      - docker-engine
+    state: absent
+
+- name: upgrade all packages
+  become: yes
+  yum:
+    name: "{{ pkgs }}"
+    state: present
+
+- name: Add Docker repository
+  become: yes
+  shell: "yum-config-manager --add-repo {{ docker_yum_repo_url }}"
+  #yum_repository:
+  #  name: docker-ce
+  #  description: docker CE repostotory
+  #  baseurl: "{{ docker_yum_repo_url }}"
+
+
+- name: Install Docker
+  become: yes
+  yum:
+    name: "{{ docker_pkgs }}"
+    state: present
+
+- name: Ensure Docker is started and enabled at boot.
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Ensure handlers are notified now to avoid firewall conflicts.
+  meta: flush_handlers
+
+
+- include_tasks: docker-users.yml
+  when: docker_users | length > 0

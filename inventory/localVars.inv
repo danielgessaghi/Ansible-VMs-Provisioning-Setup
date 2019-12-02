@@ -1,5 +1,7 @@
 [ansible]
-localhost ansible_user=daniel interpreter_python = /usr/bin/python3
+localhost ansible_user=daniel 
+interpreter_python=/usr/bin/python3
+
 
 [nodes]
 192.168.122.34 ansible_user=docker
