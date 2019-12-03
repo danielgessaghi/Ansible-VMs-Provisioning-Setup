@@ -7,20 +7,22 @@
       - docker-engine
     state: absent
 
-- name: upgrade all packages
+- name: upgrade required packages
   become: yes
   yum:
     name: "{{ pkgs }}"
     state: present
 
-- name: Add Docker repository
+- name: check if Docker repository is present
   become: yes
-  shell: "yum-config-manager --add-repo {{ docker_yum_repo_url }}"
-  #yum_repository:
-  #  name: docker-ce
-  #  description: docker CE repostotory
-  #  baseurl: "{{ docker_yum_repo_url }}"
+  stat:
+    path: /etc/yum.repos.d/{{ docker_package }}.repo
+  register: stat_result
 
+- name: Add Docker repository, if it doesnt exist already
+  become: yes
+  command: "yum-config-manager --add-repo {{ docker_yum_repo_url }}"
+  when: not stat_result.stat.exists|bool
 
 - name: Install Docker
   become: yes

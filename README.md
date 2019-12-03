@@ -1,5 +1,5 @@
 # Provisioning VM With KVM using Ansible
-[![Build Status](https://travis-ci.org/danielgessaghi/Ansible-VMs-Provisioning-Setup?branch=master)](https://travis-ci.com/danielgessaghi/Ansible-VMs-Provisioning-Setup) 
+[![Build Status](https://travis-ci.com/danielgessaghi/Ansible-VMs-Provisioning-Setup.svg?branch=master)]
 ## requirements
 
 - python 3

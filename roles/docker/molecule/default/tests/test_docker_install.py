@@ -15,14 +15,24 @@ def test_hosts_file(host):
     assert f.group == 'root'
 
 
-def test_user_is_allowed(host):
-    passwd = host.file("/etc/passwd") 
-    assert passwd.contains("docker")
-    assert passwd.user == "docker"
-    assert passwd.group == "docker"
+def test_user_root_is_allowed(host):
+    passwd = host.file("/etc/passwd")
+
+    assert passwd.contains("root")
+    assert passwd.user == "root"
+    assert passwd.group == "root"
 
 
-def test_docker_is_installed(host): 
-    dockerd = host.service("dockerd")
+def test_docker_repository_exists(host):
+    f = host.file('/etc/yum.repos.d/docker-ce.repo')
+
+    assert f.exists
+    assert f.user == 'root'
+    assert f.group == 'root'
+
+
+def test_docker_is_installed(host):
+    dockerd = host.service("docker")
+
     assert dockerd.is_running
     assert dockerd.is_enabled

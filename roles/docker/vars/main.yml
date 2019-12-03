@@ -17,6 +17,6 @@ pkgs:
   - lvm2
 
 docker_pkgs:
-  - docker-ce 
-  - docker-ce-cli 
-  - containerd.io 
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
