@@ -20,3 +20,5 @@ docker_pkgs:
   - docker-ce
   - docker-ce-cli
   - containerd.io
+
+enable_docker_api: '-H tcp://0.0.0.0:2376'

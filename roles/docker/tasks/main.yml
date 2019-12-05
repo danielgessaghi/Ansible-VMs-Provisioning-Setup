@@ -42,3 +42,5 @@
 
 - include_tasks: docker-users.yml
   when: docker_users | length > 0
+
+- include_tasks: docker-api.yml

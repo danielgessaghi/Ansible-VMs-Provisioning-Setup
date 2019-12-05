@@ -1,6 +1,5 @@
 #cloud-config
 package_upgrade: true
-package_upgrade: true
 
 hostname: {{hostname}}
 fqdn: {{fqdn}}
@@ -27,8 +26,3 @@ packages:
  - device-mapper-persistent-data
  - yum-utils
  - lvm2
- 
- growpart:
-  mode: auto
-  devices: ['/']
-  ignore_growroot_disabled: false

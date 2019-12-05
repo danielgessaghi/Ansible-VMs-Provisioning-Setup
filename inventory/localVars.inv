@@ -1,8 +1,12 @@
 [ansible]
-localhost ansible_user=daniel 
-interpreter_python=/usr/bin/python3
-
+localhost ansible_user=daniel ansible_python_interpreter=/usr/bin/python3
 
 [nodes]
-192.168.122.34 ansible_user=docker
-192.168.122.90 ansible_user=docker
+dockernode01 ansible_ssh_host=192.168.122.24 ansible_user=docker
+dockernode02 ansible_ssh_host=192.168.122.253 ansible_user=docker
+
+[docker_swarm_manager]
+dockernode01 
+
+[docker_swarm_worker]
+dockernode02 
